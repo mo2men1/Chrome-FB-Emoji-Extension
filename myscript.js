@@ -106,7 +106,7 @@ function listControl(e){
 
 		case "Enter":
 		case "Tab":
-			// selectElement(selected)
+			selectElement(selected)
 			break;
 
 		case "Escape":
@@ -153,6 +153,28 @@ function getCharacterEmoji(key) {
 	  	value = String.fromCodePoint("0x"+ value[0])
 	}
 	return value
+}
+
+function selectElement(el) {
+	var node = document.querySelector("[typing=true]");
+	var char = getCharacterEmoji(el.innerText);
+	replace(node, re_unmatched, char + " ");
+	
+}
+
+function replace(node, exp, value) {
+	var match = node.innerText.match(exp);
+	var range = document.createRange();
+
+	range.setStart(node.firstChild, match.index);
+	range.setEnd(node.firstChild, match.index + match[0].length);
+
+	var sel = window.getSelection();
+	sel.removeAllRanges();
+	sel.addRange(range);
+
+	document.execCommand("delete", false);
+	document.execCommand("insertText", false, value);
 }
 
 function search(s) {
