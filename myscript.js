@@ -77,7 +77,12 @@ function createList(items, node) {
     		li.append(p)
     		li.append(img)
     		li.onmouseover = changeActive
-
+			li.onmousedown = function(e) {
+    			if(e.which == 1) {
+	    			e.preventDefault();
+	    			selectElement(li)
+    			}
+    		}
     		
     		ul.append(li)
     	}
