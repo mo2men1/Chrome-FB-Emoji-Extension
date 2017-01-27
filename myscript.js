@@ -38,6 +38,8 @@ function clearList() {
 	    if(node) {
 		    node.removeAttribute("typing")
 	    }
+
+	    document.removeEventListener("keydown", handler, true)
 }
 
 function createList(items, node) {
@@ -81,6 +83,65 @@ function createList(items, node) {
     	div.append(ul)
     	document.body.appendChild(div)
 
+    	document.addEventListener("keydown", handler, true);
+
+}
+
+function listControl(e){
+	var selected = document.querySelector("#suggestions .active")
+	switch(e.key){
+		case "ArrowDown":
+			var next
+			next = nextElement(selected)
+    		next.className = "active"
+			selected.className = ""
+			break;
+
+		case "ArrowUp":
+			var prev
+			prev = prevElement(selected)
+			prev.className = "active"
+			selected.className = ""
+			break;
+
+		case "Enter":
+		case "Tab":
+			// selectElement(selected)
+			break;
+
+		case "Escape":
+			clearList()
+			break;
+	}
+}
+
+function nextElement(selected) {
+	var next
+	if(selected.nextSibling)
+		next = selected.nextSibling
+	else
+		next = selected.parentNode.firstChild
+	return next
+}
+
+function prevElement(selected) {
+	var prev
+	if(selected.previousSibling)
+		prev = selected.previousSibling
+	else
+		prev = selected.parentNode.lastChild
+	return prev
+}
+
+function handler(e) {
+	var a = [38, 40, 9, 13, 27]
+	if(a.indexOf(e.keyCode) >= 0) {
+		e.stopImmediatePropagation();
+		e.stopPropagation();
+		e.preventDefault();
+		// return false;
+	}
+	listControl(e)
 }
 
 function getCharacterEmoji(key) {
