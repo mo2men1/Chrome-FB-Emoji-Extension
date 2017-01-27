@@ -81,7 +81,7 @@ function createList(items, node) {
 			li.onmousedown = function(e) {
     			if(e.which == 1) {
 	    			e.preventDefault();
-	    			selectElement(li)
+	    			selectElement(this)
     			}
     		}
     		
