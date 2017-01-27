@@ -37,6 +37,7 @@ function clearList() {
 	    node = document.querySelector("[typing=true]")
 	    if(node) {
 		    node.removeAttribute("typing")
+	    	node.closest("[contenteditable]").removeEventListener("focusout", focusHandler, false)
 	    }
 
 	    document.removeEventListener("keydown", handler, true)
@@ -90,6 +91,7 @@ function createList(items, node) {
     	document.body.appendChild(div)
 
     	document.addEventListener("keydown", handler, true);
+    	node.closest("[contenteditable]").addEventListener("focusout", focusHandler, true)
 
 }
 
@@ -187,6 +189,10 @@ function changeActive(e) {
 	var active = document.querySelector("#suggestions .active")
 	active.removeAttribute("class")
 	e.target.className = "active"
+}
+
+function focusHandler() {
+	clearList();
 }
 
 function search(s) {
