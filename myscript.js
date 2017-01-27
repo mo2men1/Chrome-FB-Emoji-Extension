@@ -76,6 +76,7 @@ function createList(items, node) {
 
     		li.append(p)
     		li.append(img)
+    		li.onmouseover = changeActive
 
     		
     		ul.append(li)
@@ -175,6 +176,12 @@ function replace(node, exp, value) {
 
 	document.execCommand("delete", false);
 	document.execCommand("insertText", false, value);
+}
+
+function changeActive(e) {
+	var active = document.querySelector("#suggestions .active")
+	active.removeAttribute("class")
+	e.target.className = "active"
 }
 
 function search(s) {
