@@ -8,12 +8,12 @@
 	"content_scripts": [
 	    {
 	      "matches": ["https://www.facebook.com/*"],
-	      "js": ["myscript.js", "emoji-data/emojis_parsed.json"],
+	      "js": ["myscript.js", "emojis.json"],
 	      "css": ["style.css"],
 	      "run_at": "document_end"
 	    }
 	],
 	"web_accessible_resources": [
-		"emoji-data/*"
+		"assets/*"
 	]
 }

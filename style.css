@@ -1,0 +1,40 @@
+#suggestions {
+	background-color: #e6e5e5;
+	position: absolute;
+	/*height: 100px;*/
+	min-width: 250px;
+	/*overflow-y: scroll;*/
+	/*padding:3px;*/
+	z-index: 99999;
+	border-radius: 5px;
+	border: 1px solid rgb(199, 212, 239);
+	box-shadow: 1px 1px 5px 0px rgba(91, 93, 97, 0.67);
+}
+
+#suggestions li {
+	/*background-color: #e6e5e5;*/
+	padding: 3px;
+	border-radius: 3px;
+}
+
+#suggestions li.active {
+	background-color: rgb(64, 128, 255);
+	color: #fff;
+}
+
+#suggestions li:focus{
+	background-color: red;
+}
+
+#suggestions p {
+	display: inline-block;
+	pointer-events: none;
+}
+
+#suggestions img {
+	position: relative;
+	top: 4px;
+	float: right;
+	height: 30px;
+	pointer-events: none;
+}

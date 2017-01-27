@@ -1,5 +1,6 @@
 listen()
 re_matched = new RegExp(/:[0-9a-z_+-]+:/, "i")
+re_unmatched = new RegExp(/:[0-9a-z_+-]*/, "i")
 
 observer = new MutationObserver(function(mutations) {
 	mutations.forEach(function(mutation) {
@@ -58,6 +59,7 @@ function createList(items, node) {
     	var ul = document.createElement("ul")
     	for(var item in items) {
 			var name = items[item]["short_name"]
+			var img_url = getEmojiImage(items[item])
 
     		var li = document.createElement("li")
     		if(item == 0){
@@ -67,8 +69,12 @@ function createList(items, node) {
 	    	var p = document.createElement("p")
 	    	p.innerHTML = ":" + name + ":"
 
+	    	var img = document.createElement("img")
+	    	img.src = img_url
 
     		li.append(p)
+    		li.append(img)
+
     		
     		ul.append(li)
     	}
@@ -103,6 +109,12 @@ function search(s) {
 	return found.sort(function(a, b) {
 		return a.short_name.length - b.short_name.length
 	})
+}
+
+function getEmojiImage(item) {
+	var file_name = item["image"]
+	var folder_name = item["has_img_emojione"] ? "img-emojione-64" : item["has_img_apple"] ? "img-apple-64" : "img-google-64"
+	return chrome.extension.getURL("assets/images/" + folder_name + "/" + file_name)
 }
 
 function setTypingAttribute(node) {
