@@ -19,7 +19,7 @@ observer = new MutationObserver(function(mutations) {
 		  		matched = matched[0]
 		  		char = getCharacterEmoji(matched)
 		  		if(char)
-				  	node.innerText = node.innerText.replace(matched, char + " ")
+				  	node.innerText = node.innerText.replace(matched, char)
 		  	}
 		  	else if(unmatched){
 		    	found = search(unmatched[0].split(":")[1])
@@ -166,7 +166,7 @@ function getCharacterEmoji(key) {
 function selectElement(el) {
 	var node = document.querySelector("[typing=true]");
 	var char = getCharacterEmoji(el.innerText);
-	replace(node, re_unmatched, char + " ");
+	replace(node, re_unmatched, char);
 	
 }
 
