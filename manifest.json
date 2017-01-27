@@ -4,9 +4,8 @@
 	"name": "Facebook Emoji",
 	"description": "Chrome extension to insert facebook emojis by typing their colon names",
 	"version": "1.0",
-
-	"browser_action": {
-		"default_icon": "icon.png"
+	"icons": {
+		"64": "icon.png"
 	},
 
 	"content_scripts": [
