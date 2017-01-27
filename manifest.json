@@ -1,0 +1,19 @@
+{
+	"manifest_version": 2,
+
+	"name": "Facebook Emoji",
+	"description": "Insert Emojis using Keyboard",
+	"version": "1.0",
+
+	"content_scripts": [
+	    {
+	      "matches": ["https://www.facebook.com/*"],
+	      "js": ["myscript.js", "emoji-data/emojis_parsed.json"],
+	      "css": ["style.css"],
+	      "run_at": "document_end"
+	    }
+	],
+	"web_accessible_resources": [
+		"emoji-data/*"
+	]
+}
