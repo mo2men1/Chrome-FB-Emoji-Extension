@@ -97,6 +97,7 @@ function createList(items, node) {
 
 function listControl(e){
 	var selected = document.querySelector("#suggestions .active")
+	switch(e.key){
 		case "ArrowDown":
 			var next
 			next = nextElement(selected)
@@ -180,6 +181,7 @@ function replace(node, exp, value) {
 	sel.removeAllRanges();
 	sel.addRange(range);
 
+	// document.execCommand("delete", false);
 	document.execCommand("insertText", false, value);
 }
 
