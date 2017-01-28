@@ -182,7 +182,6 @@ function replace(node, exp, value) {
 	sel.removeAllRanges();
 	sel.addRange(range);
 
-	// document.execCommand("delete", false);
 	document.execCommand("insertText", false, value);
 }
 

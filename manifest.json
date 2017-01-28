@@ -10,7 +10,7 @@
 
 	"content_scripts": [
 	    {
-	      "matches": ["https://www.facebook.com/*"],
+	      "matches": ["https://www.facebook.com/*", "https://www.messenger.com/*"],
 	      "js": ["myscript.js", "emojis.json"],
 	      "css": ["style.css"],
 	      "run_at": "document_end"
