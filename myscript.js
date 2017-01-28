@@ -19,7 +19,8 @@ observer = new MutationObserver(function(mutations) {
 		  		matched = matched[0]
 		  		char = getCharacterEmoji(matched)
 		  		if(char)
-				  	node.innerText = node.innerText.replace(matched, char)
+		  			replace(node, matched, char)
+				  	// node.innerText = node.innerText.replace(matched, char)
 		  	}
 		  	else if(unmatched){
 		    	found = search(unmatched[0].split(":")[1])
@@ -173,11 +174,11 @@ function selectElement(el) {
 function replace(node, exp, value) {
 	var match = node.innerText.match(exp);
 	var range = document.createRange();
-
-	range.setStart(node.firstChild, match.index);
-	range.setEnd(node.firstChild, match.index + match[0].length);
-
 	var sel = window.getSelection();
+
+	range.setStart(sel.focusNode, match.index);
+	range.setEnd(sel.focusNode, match.index + match[0].length);
+
 	sel.removeAllRanges();
 	sel.addRange(range);
 
