@@ -1,6 +1,6 @@
 listen()
 re_matched = new RegExp(/:[0-9a-z_+-]+:/, "i")
-re_unmatched = new RegExp(/:[0-9a-z_+-]*/, "i")
+re_unmatched = new RegExp(/:[0-9a-z_+-]+/, "i")
 
 observer = new MutationObserver(function(mutations) {
 	mutations.forEach(function(mutation) {
