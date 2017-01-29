@@ -54,11 +54,16 @@ function createList(items, node) {
     	div.id = "suggestions"
 
     	var offset = 30
+    	var top = 0
     	if(rect.top > window.screen.availHeight - 300)
     		offset = -items.length * 48 - 10
-    	div.style.top = rect.top + window.scrollY + offset + "px"
+    	top = rect.top + window.scrollY + offset
     	div.style.left = rect.left  + "px"
-    	if(node.closest("._48gf")) div.style.position = "fixed";		//stupid solution
+    	if(node.closest("._48gf")) {
+	    	div.style.position = "fixed";		//stupid solution
+	    	top -= window.scrollY
+    	}
+    	div.style.top = top + "px"
 
     	var ul = document.createElement("ul")
     	for(var item in items) {
